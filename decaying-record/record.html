@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archival Specimen Record</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #f4f5f7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 3D Scene Wrapper */
+    .card-container {
+      width: 460px;
+      height: 520px;
+      perspective: 1000px;
+    }
+
+    /* Inner Flipping Object */
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    /* Trigger Class for JS Flip */
+    .card-container.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Shared Card Face Styles */
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Front Face Styles */
+    .card-front {
+      z-index: 2;
+      align-items: center;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 260px;
+      background-color: #e2e8f0;
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #64748b;
+      text-align: center;
+      margin-bottom: auto;
+    }
+
+    .archive-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #0f172a;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .archive-btn:hover {
+      background-color: #334155;
+    }
+
+    /* Back Face (Archival Specimen Label) */
+    .card-back {
+      transform: rotateY(180deg);
+      font-family: 'Courier New', Courier, monospace;
+      color: #1a1a1a;
+      background-color: #fcfbf9;
+      padding: 20px;
+    }
+
+    .specimen-label-border {
+      border: 1px solid #1a1a1a;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .catalog-number {
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #1a1a1a;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-label {
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #555555;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .field-value {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #1a1a1a;
+    }
+
+    .field-group.flexible {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+
+    .field-group.flexible .field-value {
+      border-top: 1px dashed #ccc;
+      padding-top: 6px;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container" id="cardContainer">
+    <div class="card-inner">
+      
+      <div class="card-face card-front">
+        <div class="image-placeholder">
+          <span>Image Placeholder</span>
+        </div>
+        <h2 class="title">Record Item Title</h2>
+        <p class="subtitle">Created on Sept 3, 2026 • Reference ID: #84920</p>
+        <button class="archive-btn" id="archiveBtn">Archive this</button>
+      </div>
+
+      <div class="card-face card-back">
+        <div class="specimen-label-border">
+          <div class="catalog-number">CATALOG NO. SPEC-2026-0903</div>
+          
+          <div class="field-group">
+            <span class="field-label">Title</span>
+            <div class="field-value">Record Item Title</div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Date and place</span>
+            <div class="field-value">03 SEP 2026 — 22.3193° N, 114.1694° E</div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Recorded by</span>
+            <div class="field-value">Archivist #4092</div>
+          </div>
+
+          <div class="field-group flexible">
+            <span class="field-label">What was not captured</span>
+            <div class="field-value">Ambient temperature, low-frequency hum of nearby HVAC system, subtle shifts in natural light prior to dusk.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const cardContainer = document.getElementById('cardContainer');
+    const archiveBtn = document.getElementById('archiveBtn');
+
+    archiveBtn.addEventListener('click', () => {
+      cardContainer.classList.add('flipped');
+    });
+  </script>
+
+</body>
+</html>
