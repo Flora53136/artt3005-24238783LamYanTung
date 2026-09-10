@@ -18,6 +18,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+
+    /* Error Message Overlay Styling */
+    .error-message {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      background-color: #ffffff;
+      padding: 24px 32px;
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
     }
 
     /* 3D Scene Wrapper */
@@ -61,30 +75,37 @@
       align-items: center;
     }
 
-    .image-placeholder {
+    .image-container {
       width: 100%;
       height: 260px;
       background-color: #e2e8f0;
-      border: 2px dashed #cbd5e1;
+      border: 1px solid #e2e8f0;
       border-radius: 8px;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #64748b;
       font-weight: 500;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #1e293b;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-align: center;
     }
 
     .subtitle {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #64748b;
       text-align: center;
       margin-bottom: auto;
@@ -116,14 +137,17 @@
       padding: 20px;
     }
 
+    /* Sharp Border Container */
     .specimen-label-border {
       border: 1px solid #1a1a1a;
       height: 100%;
       padding: 20px;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
+    /* Sharp Catalog Header */
     .catalog-number {
       font-size: 0.85rem;
       font-weight: bold;
@@ -131,26 +155,43 @@
       text-transform: uppercase;
       border-bottom: 1px solid #1a1a1a;
       padding-bottom: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      color: #1a1a1a;
     }
 
     .field-group {
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
+    /* Sharp Field Label */
     .field-label {
       font-size: 0.75rem;
       font-weight: bold;
       text-transform: uppercase;
-      color: #555555;
-      margin-bottom: 4px;
+      color: #1a1a1a;
+      margin-bottom: 2px;
       display: block;
     }
 
+    /* Base Initial State for Field Values */
     .field-value {
-      font-size: 0.85rem;
-      line-height: 1.4;
+      font-size: 0.82rem;
+      line-height: 1.35;
       color: #1a1a1a;
+      opacity: 1;
+      filter: blur(0px);
+      letter-spacing: 0em;
+      transition-property: opacity, filter, letter-spacing;
+      transition-duration: 15s;
+      transition-timing-function: linear, ease-out, ease-out;
+      transition-delay: 0s;
+      will-change: opacity, filter, letter-spacing;
+    }
+
+    /* Late Decay for "What was not captured" value */
+    .field-value.slow-decay {
+      transition-duration: 4s;
+      transition-delay: 11s;
     }
 
     .field-group.flexible {
@@ -161,9 +202,16 @@
     }
 
     .field-group.flexible .field-value {
-      border-top: 1px dashed #ccc;
+      border-top: 1px dashed #aaa;
       padding-top: 6px;
       height: 100%;
+    }
+
+    /* Decay Target State when flipped */
+    .card-container.flipped .field-value {
+      opacity: 0.05;
+      filter: blur(6px);
+      letter-spacing: 0.35em;
     }
   </style>
 </head>
@@ -172,37 +220,44 @@
   <div class="card-container" id="cardContainer">
     <div class="card-inner">
       
+      <!-- Front Face -->
       <div class="card-face card-front">
-        <div class="image-placeholder">
-          <span>Image Placeholder</span>
+        <div class="image-container" id="frontImageContainer">
+          <span>Loading image...</span>
         </div>
-        <h2 class="title">Record Item Title</h2>
-        <p class="subtitle">Created on Sept 3, 2026 • Reference ID: #84920</p>
+        <h2 class="title" id="frontTitle">Loading...</h2>
+        <p class="subtitle" id="frontPlace">Loading place...</p>
         <button class="archive-btn" id="archiveBtn">Archive this</button>
       </div>
 
+      <!-- Back Face (Archival Specimen Label) -->
       <div class="card-face card-back">
         <div class="specimen-label-border">
-          <div class="catalog-number">CATALOG NO. SPEC-2026-0903</div>
+          <div class="catalog-number" id="backCatalog">CATALOG NO. --</div>
           
           <div class="field-group">
             <span class="field-label">Title</span>
-            <div class="field-value">Record Item Title</div>
+            <div class="field-value" id="backTitle">--</div>
           </div>
 
           <div class="field-group">
             <span class="field-label">Date and place</span>
-            <div class="field-value">03 SEP 2026 — 22.3193° N, 114.1694° E</div>
+            <div class="field-value" id="backDatePlace">--</div>
           </div>
 
           <div class="field-group">
             <span class="field-label">Recorded by</span>
-            <div class="field-value">Archivist #4092</div>
+            <div class="field-value" id="backRecorder">--</div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Certainty</span>
+            <div class="field-value" id="backCertainty">--</div>
           </div>
 
           <div class="field-group flexible">
             <span class="field-label">What was not captured</span>
-            <div class="field-value">Ambient temperature, low-frequency hum of nearby HVAC system, subtle shifts in natural light prior to dusk.</div>
+            <div class="field-value slow-decay" id="backNotCaptured">--</div>
           </div>
         </div>
       </div>
@@ -214,9 +269,50 @@
     const cardContainer = document.getElementById('cardContainer');
     const archiveBtn = document.getElementById('archiveBtn');
 
+    // Flip interaction
     archiveBtn.addEventListener('click', () => {
       cardContainer.classList.add('flipped');
     });
+
+    // Fetch and populate record data from record.json
+    async function loadRecordData() {
+      try {
+        const response = await fetch('./record.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        // Populate Front Face
+        document.getElementById('frontTitle').textContent = data.title || 'Untitled Record';
+        document.getElementById('frontPlace').textContent = data.place || 'Unknown Place';
+        
+        const frontImageContainer = document.getElementById('frontImageContainer');
+        if (data.image) {
+          frontImageContainer.innerHTML = `<img src="${data.image}" alt="${data.title || 'Record Image'}">`;
+        } else {
+          frontImageContainer.innerHTML = `<span>No Image Available</span>`;
+        }
+
+        // Populate Back Face
+        document.getElementById('backCatalog').textContent = `CATALOG NO. ${data.catalog_id || 'UNKNOWN'}`;
+        document.getElementById('backTitle').textContent = data.title || 'Untitled';
+        
+        const datePlaceStr = [data.date, data.place].filter(Boolean).join(' — ');
+        document.getElementById('backDatePlace').textContent = datePlaceStr || 'Unknown';
+        
+        document.getElementById('backRecorder').textContent = data.recorder || 'Unknown';
+        document.getElementById('backCertainty').textContent = data.certainty !== undefined ? data.certainty : 'Unspecified';
+        document.getElementById('backNotCaptured').textContent = data.not_captured || 'None specified.';
+
+      } catch (error) {
+        console.error('Failed to load record.json:', error);
+        // Replace page contents with the specified monospace error message
+        document.body.innerHTML = '<div class="error-message">record.json did not load. Are you serving the folder?</div>';
+      }
+    }
+
+    loadRecordData();
   </script>
 
 </body>
