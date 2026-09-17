@@ -1,0 +1,225 @@
+{
+    "collection": "Cookies made with Friends",
+    "records": [
+      {
+        "id": "REC-001",
+        "title": "Plastic bag, ingredients",
+        "type": "sound",
+        "file": "media/plasticBag.mp3",
+        "date": "2019-10-12",
+        "place": "my hand",
+        "recorder": "Flora",
+        "not_captured": "its weight, and which hand I used to hold it",
+        "certainty": 2
+      },
+      {
+        "id": "REC-002",
+        "title": "Small backpack, the girl by my side",
+        "type": "image",
+        "file": "media/smallBackpack.jpeg",
+        "date": "2019-10-12",
+        "place": "my friend's back",
+        "recorder": "Flora",
+        "not_captured": "its meaning to her",
+        "certainty": 4
+      },
+      {
+        "id": "REC-003",
+        "title": "Memory - The first time",
+        "type": "text",
+        "file": "media/memory.txt",
+        "date": "2019-10-12",
+        "place": "the way to my friend's house, Tsuen Wan",
+        "recorder": "Flora",
+        "not_captured": "our tone, our faces",
+        "certainty": 1
+      },
+      {
+        "id": "REC-004",
+        "title": "Dolls, jellyfish",
+        "type": "image",
+        "file": "media/doll.jpeg",
+        "date": "2019-10-12",
+        "place": "my friend's sofa",
+        "recorder": "Flora",
+        "not_captured": "since when they had already been there",
+        "certainty": 3
+      },
+      {
+        "id": "REC-005",
+        "title": "Molds",
+        "type": "image",
+        "file": "media/mold.jpeg",
+        "date": "2019-10-12",
+        "place": "the table in my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "their exact size, and how many times they have already been used",
+        "certainty": 2
+      },
+      {
+        "id": "REC-006",
+        "title": "Hand mixer, mix",
+        "type": "sound",
+        "file": "media/mixer.mp3",
+        "date": "2019-10-12",
+        "place": "my friend's hand",
+        "recorder": "Flora",
+        "not_captured": "how much of the ingredients it mixed",
+        "certainty": 2
+      },
+      {
+        "id": "REC-007",
+        "title": "Butter, chocolate, mint",
+        "type": "image",
+        "file": "media/flavor.jpeg",
+        "date": "2019-10-12",
+        "place": "the table in my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "the way they were made",
+        "certainty": 4
+      },
+      {
+        "id": "REC-008",
+        "title": "Baking time and ——",
+        "type": "sound",
+        "file": "media/oven.mp3",
+        "date": "2019-10-12",
+        "place": "my friend's kitchen",
+        "recorder": "Flora",
+        "not_captured": "the baking duration, and our anticipation",
+        "certainty": 3
+      },
+      {
+        "id": "REC-009",
+        "title": "—— Waiting time",
+        "type": "image",
+        "file": "media/books.jpeg",
+        "date": "2019-10-12",
+        "place": "my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "the waiting duration, and the contents of the book",
+        "certainty": 1
+      },
+      {
+        "id": "REC-010",
+        "title": "Perfect cookies",
+        "type": "image",
+        "file": "media/cookies.jpeg",
+        "date": "2019-10-12",
+        "place": "the table in my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "the smell, and the steam",
+        "certainty": 5
+      },
+      {
+        "id": "REC-011",
+        "title": "Correction: Toothpaste flavor",
+        "type": "image",
+        "file": "media/toothpaste.jpeg",
+        "date": "2019-10-12",
+        "place": "my hand",
+        "recorder": "Flora",
+        "not_captured": "the actual taste",
+        "certainty": 4
+      },
+      {
+        "id": "REC-012",
+        "title": "Her cat",
+        "type": "image",
+        "file": "media/cat.jpeg",
+        "date": "2019-10-12",
+        "place": "my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "what drew her cat in. Cookies?",
+        "certainty": 3
+      },
+      {
+        "id": "REC-013",
+        "title": "More cookies, more jellyfish",
+        "type": "image",
+        "file": "media/more.jpeg",
+        "date": "2019-10-12",
+        "place": "the table in my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "how long my friend spent making them",
+        "certainty": 4
+      },
+      {
+        "id": "REC-014",
+        "title": "Package - 'PRESENT FOR YOU'",
+        "type": "image",
+        "file": "media/package.jpeg",
+        "date": "2019-10-12",
+        "place": "the table in my friend's living room",
+        "recorder": "Flora",
+        "not_captured": "the process of it going from empty to being filled with cookies",
+        "certainty": 5
+      },
+      {
+        "id": "REC-015",
+        "title": "Purple sky",
+        "type": "image",
+        "file": "media/sky.jpeg",
+        "date": "2019-10-12",
+        "place": "the way to my home, Tsuen Wan",
+        "recorder": "Flora",
+        "not_captured": "the wind, and my feelings",
+        "certainty": 5
+      },
+      {
+        "id": "REC-016",
+        "title": "Prank, toothpaste-flavored cookie",
+        "type": "text",
+        "file": "media/prank.txt",
+        "date": "2019-10-14",
+        "place": "my secondary school classroom",
+        "recorder": "Flora",
+        "not_captured": "the bright smile on my face",
+        "certainty": 3
+      },
+      {
+        "id": "REC-017",
+        "title": "Burnt cookies, second time",
+        "type": "image",
+        "file": "media/failure.jpeg",
+        "date": "2022-11-11",
+        "place": "my secondary school's home economics room",
+        "recorder": "Flora",
+        "not_captured": "the smell, and the shared laughter",
+        "certainty": 4
+      },
+      {
+        "id": "REC-018",
+        "title": "Date",
+        "type": "text",
+        "file": "media/date.txt",
+        "date": "2026-08-09",
+        "place": "the way to my home, Tsuen Wan",
+        "recorder": "Flora",
+        "not_captured": "who was by my side that day, and who does 'she' refer to",
+        "certainty": 4
+      },
+      {
+        "id": "REC-019",
+        "title": "Imperfect cookie",
+        "type": "image",
+        "file": "media/imcookie.jpeg",
+        "date": "2026-08-13",
+        "place": "my friend's kitchen",
+        "recorder": "Flora",
+        "not_captured": "why it is imperfect, not merely because of its appearance",
+        "certainty": 5
+      },
+      {
+        "id": "REC-020",
+        "title": "Steps",
+        "type": "text",
+        "file": "media/steps.txt",
+        "date": "2026-09-15",
+        "place": "my memory",
+        "recorder": "Flora",
+        "not_captured": "who told me about them",
+        "certainty": 2
+      }
+    ]
+  }
